@@ -1,0 +1,12 @@
+{
+  "name": "nowdev-working-example",
+  "alias": "nowdev-working-example.now.sh",
+  "version": 2,
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }, { "src": "api/*.js", "use": "@now/node" }],
+  "routes": [
+    { "src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+", "headers": { "cache-control": "immutable" } },
+    { "src": "^/(favicon.ico|manifest.json|robots.txt|humans.txt|sitemap.xml|sitemap.xsl|seo/*)$", "dest": "/static/$1" },
+    { "src": "/redirect", "status": 301, "headers": { "Location": "https://example.com" } },
+    { "src": "/api/express.js", "methods": ["POST", "GET"] }
+  ]
+}
